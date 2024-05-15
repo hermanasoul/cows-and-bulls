@@ -1,44 +1,44 @@
 // Здесь и далее с трудом изучаю гитхаб СНОВА
 
-const generateNumber = () => {
-  let digits = [];
-  while (digits.length < 4) {
-    let randomDigit = Math.floor(Math.random() * 10).toString();
-    if (!digits.includes(randomDigit)) {
-      digits.push(randomDigit);
+const generate = () => {
+  let numbers = [];
+  while (numbers.length < 4) {
+    let randomNum = Math.floor(Math.random() * 10).toString();
+    if (!numbers.includes(randomNum)) {
+      numbers.push(randomNum);
     }
   }
   return digits.join('');
 }
 
-const checkNumber = (guess, secretNumber) => {
+const checkNumber = (guess, secretNum) => {
   let bulls = 0;
   let cows = 0;
   for (let i = 0; i < guess.length; i++) {
-    if (guess[i] === secretNumber[i]) {
+    if (guess[i] === secretNum[i]) {
       bulls++;
-    } else if (secretNumber.includes(guess[i])) {
+    } else if (secretNum.includes(guess[i])) {
       cows++;
     }
   }
   return { bulls: bulls, cows: cows };
 }
 
-const playGame = () => {
-  let secretNumber = generateNumber();
-  let attempts = 10; // Ограничение по количеству ходов
-  console.log('Игра "Быки и коровы". Угадайте 4-значное число.');
+const game = () => {
+  let secretNum = generateNum();
+  let attempts = 10;
+  console.log('Добро пожаловать в игру "Быки и коровы"! Угадайте 4-значное число.');
 
   for (let i = 0; i < attempts; i++) {
     let guess = prompt('Введите ваше число:');
-    if (guess === secretNumber) {
-      console.log('Поздравляем! Вы угадали число:', secretNumber);
+    if (guess === secretNum) {
+      console.log('Поздравляем! Вы отгадали число:', secretNum);
       return;
     } else {
-      let result = checkNumber(guess, secretNumber);
+      let result = checkNum(guess, secretNum);
       console.log('Быки:', result.bulls, 'Коровы:', result.cows);
     }
   }
 
-  console.log('К сожалению, вы не угадали. Загаданное число было:', secretNumber);
+  console.log('К сожалению, Вы не угадали. Загаданное число:', secretNumb);
 }
