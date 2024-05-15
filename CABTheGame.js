@@ -8,7 +8,7 @@ const generate = () => {
       numbers.push(randomNum);
     }
   }
-  return digits.join('');
+  return numbers.join('');
 }
 
 const checkNumber = (guess, secretNum) => {
@@ -25,7 +25,7 @@ const checkNumber = (guess, secretNum) => {
 }
 
 const game = () => {
-  let secretNum = generateNum();
+  let secretNum = generate();
   let attempts = 10;
   console.log('Добро пожаловать в игру "Быки и коровы"! Угадайте 4-значное число.');
 
@@ -41,4 +41,4 @@ const game = () => {
   }
 
   console.log('К сожалению, Вы не угадали. Загаданное число:', secretNumb);
-}
+};
